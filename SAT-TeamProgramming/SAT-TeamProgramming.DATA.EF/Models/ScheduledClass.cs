@@ -12,7 +12,7 @@ namespace SAT_TeamProgramming.DATA.EF.Models
 
         public int SchelduledClassId { get; set; }
         public int CourseId { get; set; }
-        public DateTime StratDate { get; set; }
+        public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public string InstuctorName { get; set; } = null!;
         public string Location { get; set; } = null!;

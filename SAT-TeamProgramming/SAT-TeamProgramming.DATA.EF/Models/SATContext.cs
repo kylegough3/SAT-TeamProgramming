@@ -42,10 +42,6 @@ namespace SAT_TeamProgramming.DATA.EF.Models
         {
             modelBuilder.Entity<AspNetRole>(entity =>
             {
-                entity.HasIndex(e => e.NormalizedName, "RoleNameIndex")
-                    .IsUnique()
-                    .HasFilter("([NormalizedName] IS NOT NULL)");
-
                 entity.Property(e => e.Name).HasMaxLength(256);
 
                 entity.Property(e => e.NormalizedName).HasMaxLength(256);
@@ -53,7 +49,7 @@ namespace SAT_TeamProgramming.DATA.EF.Models
 
             modelBuilder.Entity<AspNetRoleClaim>(entity =>
             {
-                entity.HasIndex(e => e.RoleId, "IX_AspNetRoleClaims_RoleId");
+                entity.Property(e => e.RoleId).HasMaxLength(450);
 
                 entity.HasOne(d => d.Role)
                     .WithMany(p => p.AspNetRoleClaims)
@@ -62,12 +58,6 @@ namespace SAT_TeamProgramming.DATA.EF.Models
 
             modelBuilder.Entity<AspNetUser>(entity =>
             {
-                entity.HasIndex(e => e.NormalizedEmail, "EmailIndex");
-
-                entity.HasIndex(e => e.NormalizedUserName, "UserNameIndex")
-                    .IsUnique()
-                    .HasFilter("([NormalizedUserName] IS NOT NULL)");
-
                 entity.Property(e => e.Email).HasMaxLength(256);
 
                 entity.Property(e => e.NormalizedEmail).HasMaxLength(256);
@@ -87,14 +77,12 @@ namespace SAT_TeamProgramming.DATA.EF.Models
                             j.HasKey("UserId", "RoleId");
 
                             j.ToTable("AspNetUserRoles");
-
-                            j.HasIndex(new[] { "RoleId" }, "IX_AspNetUserRoles_RoleId");
                         });
             });
 
             modelBuilder.Entity<AspNetUserClaim>(entity =>
             {
-                entity.HasIndex(e => e.UserId, "IX_AspNetUserClaims_UserId");
+                entity.Property(e => e.UserId).HasMaxLength(450);
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.AspNetUserClaims)
@@ -105,11 +93,11 @@ namespace SAT_TeamProgramming.DATA.EF.Models
             {
                 entity.HasKey(e => new { e.LoginProvider, e.ProviderKey });
 
-                entity.HasIndex(e => e.UserId, "IX_AspNetUserLogins_UserId");
-
                 entity.Property(e => e.LoginProvider).HasMaxLength(128);
 
                 entity.Property(e => e.ProviderKey).HasMaxLength(128);
+
+                entity.Property(e => e.UserId).HasMaxLength(450);
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.AspNetUserLogins)
@@ -179,7 +167,7 @@ namespace SAT_TeamProgramming.DATA.EF.Models
 
                 entity.Property(e => e.Scsid).HasColumnName("SCSID");
 
-                entity.Property(e => e.StratDate).HasColumnType("date");
+                entity.Property(e => e.StartDate).HasColumnType("date");
 
                 entity.HasOne(d => d.Course)
                     .WithMany(p => p.ScheduledClasses)
