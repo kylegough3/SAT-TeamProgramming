@@ -29,4 +29,8 @@
     <Folder Include="wwwroot\_archive\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SAT-TeamProgramming.DATA.EF\SAT-TeamProgramming.DATA.EF.csproj" />
+  </ItemGroup>
+
 </Project>
