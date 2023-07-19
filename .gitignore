@@ -399,3 +399,4 @@ FodyWeavers.xsd
 
 #Prevent sensitive data from Git posting
 /SAT-TeamProgramming.UI.MVC.appsettings.json
+/SAT-TeamProgramming/SAT-TeamProgramming.UI.MVC/appsettings.json
