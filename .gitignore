@@ -396,3 +396,6 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+#Prevent sensitive data from Git posting
+/SAT-TeamProgramming.UI.MVC.appsettings.json
