@@ -95,11 +95,13 @@ namespace SAT_TeamProgramming.DATA.EF.Models
     public class EnrollmentMetadata
     {
         [Required(ErrorMessage = "* Student ID required")]
-        public int StudentId { get; set; }
+		[Display(Name = "Student")]
+		public int StudentId { get; set; }
         
         
         [Required(ErrorMessage = "Schedule Class ID is required")]
-        [Range(0, int.MaxValue)]
+		[Display(Name = "Course Info")]
+		[Range(0, int.MaxValue)]
         public int ScheduledClassId { get; set; }
 
 
@@ -138,6 +140,8 @@ namespace SAT_TeamProgramming.DATA.EF.Models
         [Required(ErrorMessage = "Scsid is required")]
         [Display(Name = "Scheduled Class ID")]
         public int Scsid { get; set; }
+
+		
     }
 
     public class ScheduledClassStatusMetadata

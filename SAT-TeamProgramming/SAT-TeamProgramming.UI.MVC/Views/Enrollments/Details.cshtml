@@ -17,16 +17,17 @@
             @Html.DisplayFor(model => model.EnrollmentDate)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ScheduledClass)
+            @*@Html.DisplayNameFor(model => model.ScheduledClass)*@
+            Class Info
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ScheduledClass.InstuctorName)
+            @Html.DisplayFor(model => model.ScheduledClass.SchClassInfo)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Student)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Student.Email)
+            @Html.DisplayFor(model => model.Student.FullName)
         </dd>
     </dl>
 </div>

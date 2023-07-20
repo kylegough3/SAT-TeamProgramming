@@ -16,7 +16,8 @@
                 @Html.DisplayNameFor(model => model.EnrollmentDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ScheduledClass)
+                @*@Html.DisplayNameFor(model => model.ScheduledClass)*@
+                Class Info
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Student)
@@ -31,10 +32,10 @@
                 @Html.DisplayFor(modelItem => item.EnrollmentDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ScheduledClass.InstuctorName)
+                @Html.DisplayFor(modelItem => item.ScheduledClass.SchClassInfo)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Student.Email)
+                @Html.DisplayFor(modelItem => item.Student.FullName)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.EnrollmentId">Edit</a> |

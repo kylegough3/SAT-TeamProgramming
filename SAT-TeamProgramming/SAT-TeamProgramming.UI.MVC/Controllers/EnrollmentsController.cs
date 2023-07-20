@@ -24,7 +24,7 @@ namespace SAT_TeamProgramming.UI.MVC.Controllers
         // GET: Enrollments
         public async Task<IActionResult> Index()
         {
-            var sATContext = _context.Enrollments.Include(e => e.ScheduledClass).Include(e => e.Student);
+            var sATContext = _context.Enrollments.Include(e => e.ScheduledClass).Include(e => e.Student).Include(e => e.ScheduledClass.Course);
             return View(await sATContext.ToListAsync());
         }
 
@@ -38,6 +38,7 @@ namespace SAT_TeamProgramming.UI.MVC.Controllers
 
             var enrollment = await _context.Enrollments
                 .Include(e => e.ScheduledClass)
+                .Include(e => e.ScheduledClass.Course)
                 .Include(e => e.Student)
                 .FirstOrDefaultAsync(m => m.EnrollmentId == id);
             if (enrollment == null)
@@ -51,8 +52,8 @@ namespace SAT_TeamProgramming.UI.MVC.Controllers
         // GET: Enrollments/Create
         public IActionResult Create()
         {
-            ViewData["ScheduledClassId"] = new SelectList(_context.ScheduledClasses, "SchelduledClassId", "InstuctorName");
-            ViewData["StudentId"] = new SelectList(_context.Students, "StudentId", "Email");
+            ViewData["ScheduledClassId"] = new SelectList(_context.ScheduledClasses.Include(e => e.Course), "SchelduledClassId", "SchClassInfo");
+            ViewData["StudentId"] = new SelectList(_context.Students, "StudentId", "FullName");
             return View();
         }
 
@@ -69,9 +70,10 @@ namespace SAT_TeamProgramming.UI.MVC.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ScheduledClassId"] = new SelectList(_context.ScheduledClasses, "SchelduledClassId", "InstuctorName", enrollment.ScheduledClassId);
-            ViewData["StudentId"] = new SelectList(_context.Students, "StudentId", "Email", enrollment.StudentId);
-            return View(enrollment);
+			ViewData["ScheduledClassId"] = new SelectList(_context.ScheduledClasses.Include(e => e.Course), "SchelduledClassId", "SchClassInfo", enrollment.ScheduledClassId);
+			ViewData["StudentId"] = new SelectList(_context.Students, "StudentId", "FullName", enrollment.StudentId);
+			return View(enrollment);
+			
         }
 
         // GET: Enrollments/Edit/5
@@ -87,10 +89,10 @@ namespace SAT_TeamProgramming.UI.MVC.Controllers
             {
                 return NotFound();
             }
-            ViewData["ScheduledClassId"] = new SelectList(_context.ScheduledClasses, "SchelduledClassId", "InstuctorName", enrollment.ScheduledClassId);
-            ViewData["StudentId"] = new SelectList(_context.Students, "StudentId", "Email", enrollment.StudentId);
-            return View(enrollment);
-        }
+			ViewData["ScheduledClassId"] = new SelectList(_context.ScheduledClasses.Include(e => e.Course), "SchelduledClassId", "SchClassInfo", enrollment.ScheduledClassId);
+			ViewData["StudentId"] = new SelectList(_context.Students, "StudentId", "FullName", enrollment.StudentId);
+			return View(enrollment);
+		}
 
         // POST: Enrollments/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
