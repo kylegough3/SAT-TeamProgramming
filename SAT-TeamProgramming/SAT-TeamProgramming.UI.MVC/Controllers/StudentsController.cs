@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +11,7 @@ using SAT_TeamProgramming.DATA.EF.Models;
 
 namespace SAT_TeamProgramming.UI.MVC.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class StudentsController : Controller
     {
         private readonly SATContext _context;
@@ -19,6 +22,7 @@ namespace SAT_TeamProgramming.UI.MVC.Controllers
         }
 
         // GET: Students
+        [Authorize(Roles = "Admin, Scheduler")]
         public async Task<IActionResult> Index()
         {
             var sATContext = _context.Students.Include(s => s.Ss);
@@ -26,6 +30,7 @@ namespace SAT_TeamProgramming.UI.MVC.Controllers
         }
 
         // GET: Students/Details/5
+        [Authorize(Roles = "Admin, Scheduler")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Students == null)

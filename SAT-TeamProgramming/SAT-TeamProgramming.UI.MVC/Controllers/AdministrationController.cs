@@ -7,7 +7,7 @@ using SAT_TeamProgramming.UI.MVC.Controllers;
 
 namespace SAT_TeamProgramming.UI.MVC.Controllers//Updated namespace
 {
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class AdministrationController : Controller
     {
         #region Props/Ctors
