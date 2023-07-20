@@ -18,8 +18,9 @@ namespace SAT_TeamProgramming.DATA.EF.Models
         public string Location { get; set; } = null!;
         public int Scsid { get; set; }
 
-        public virtual Course Course { get; set; } = null!;
-        public virtual ScheduledClassStatus Scs { get; set; } = null!;
+        //modified Course and ScheduledClass status to allow nullable types in order create our own Courses and ScheduledClassStatus
+        public virtual Course? Course { get; set; }
+        public virtual ScheduledClassStatus? Scs { get; set; }
         public virtual ICollection<Enrollment> Enrollments { get; set; }
     }
 }
