@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +11,7 @@ using SAT_TeamProgramming.DATA.EF.Models;
 
 namespace SAT_TeamProgramming.UI.MVC.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ScheduledClassesController : Controller
     {
         private readonly SATContext _context;
@@ -19,6 +22,7 @@ namespace SAT_TeamProgramming.UI.MVC.Controllers
         }
 
         // GET: ScheduledClasses
+        [Authorize(Roles = "Admin, Scheduler")]
         public async Task<IActionResult> Index()
         {
             var sATContext = _context.ScheduledClasses.Include(s => s.Course).Include(s => s.Scs);
@@ -26,6 +30,7 @@ namespace SAT_TeamProgramming.UI.MVC.Controllers
         }
 
         // GET: ScheduledClasses/Details/5
+        [Authorize(Roles = "Admin, Scheduler")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.ScheduledClasses == null)
@@ -46,6 +51,7 @@ namespace SAT_TeamProgramming.UI.MVC.Controllers
         }
 
         // GET: ScheduledClasses/Create
+        [Authorize(Roles = "Admin, Scheduler")]
         public IActionResult Create()
         {
             ViewData["CourseId"] = new SelectList(_context.Courses, "CourseId", "CourseDescription");
@@ -58,6 +64,7 @@ namespace SAT_TeamProgramming.UI.MVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, Scheduler")]
         public async Task<IActionResult> Create([Bind("SchelduledClassId,CourseId,StartDate,EndDate,InstuctorName,Location,Scsid")] ScheduledClass scheduledClass)
         {
             if (ModelState.IsValid)
@@ -72,6 +79,7 @@ namespace SAT_TeamProgramming.UI.MVC.Controllers
         }
 
         // GET: ScheduledClasses/Edit/5
+        [Authorize(Roles = "Admin, Scheduler")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.ScheduledClasses == null)
@@ -94,6 +102,7 @@ namespace SAT_TeamProgramming.UI.MVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, Scheduler")]
         public async Task<IActionResult> Edit(int id, [Bind("SchelduledClassId,CourseId,StartDate,EndDate,InstuctorName,Location,Scsid")] ScheduledClass scheduledClass)
         {
             if (id != scheduledClass.SchelduledClassId)
