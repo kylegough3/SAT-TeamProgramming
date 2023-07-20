@@ -56,17 +56,17 @@
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div><!-- End Logo -->
 
-        @*<div class="search-bar">
-            <form class="search-form d-flex align-items-center" method="POST" action="#">
+        <div class="search-bar">
+            @*<form class="search-form d-flex align-items-center" method="POST" action="#">
                 <input type="text" name="query" placeholder="Search" title="Enter search keyword">
                 <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-            </form>
+            </form>*@
         </div><!-- End Search Bar -->
 
         <nav class="header-nav ms-auto">
             <ul class="d-flex align-items-center">
 
-                <li class="nav-item d-block d-lg-none">
+                @*<li class="nav-item d-block d-lg-none">
                     <a class="nav-link nav-icon search-bar-toggle " href="#">
                         <i class="bi bi-search"></i>
                     </a>
@@ -286,91 +286,90 @@
             </li><!-- End Dashboard Nav -->
             @*@if (SignInManager.IsSignedIn(User) && User.IsInRole("Scheduling") || User.IsInRole("Admin"))
             {*@
-                <li class="nav-item">
-                    <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-                        <i class="bi bi-menu-button-wide"></i><span>Admin</span><i class="bi bi-chevron-down ms-auto"></i>
-                    </a>
-                    <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                        <li>
-                            <a href=@Url.Action("Index", "Courses")>
-                                <i class="bi bi-circle"></i><span>Courses</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href=@Url.Action("Index", "Enrollments")>
-                                <i class="bi bi-circle"></i><span>Enrollments</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href=@Url.Action("Index", "ScheduledClasses")>
-                                <i class="bi bi-circle"></i><span>Scheduled Classes</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href=@Url.Action("Index", "Students")>
-                                <i class="bi bi-circle"></i><span>Students</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a asp-action="ListUsers" asp-controller="Administration">
-                                <i class="bi bi-circle"></i><span>Users</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a asp-action="ListRoles" asp-controller="Administration">
-                                <i class="bi bi-circle"></i><span>Roles</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href=@Url.Action("Index", "ScheduledClassStatus")>
-                                <i class="bi bi-circle"></i><span>Scheduled Class Statuses</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href=@Url.Action("Index", "StudentStatus")>
-                                <i class="bi bi-circle"></i><span>Student Statuses</span>
-                            </a>
-                        </li>
-                    </ul>
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-menu-button-wide"></i><span>Admin</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href=@Url.Action("Index", "Courses")>
+                            <i class="bi bi-circle"></i><span>Courses</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href=@Url.Action("Index", "Enrollments")>
+                            <i class="bi bi-circle"></i><span>Enrollments</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href=@Url.Action("Index", "ScheduledClasses")>
+                            <i class="bi bi-circle"></i><span>Scheduled Classes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href=@Url.Action("Index", "Students")>
+                            <i class="bi bi-circle"></i><span>Students</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-action="ListUsers" asp-controller="Administration">
+                            <i class="bi bi-circle"></i><span>Users</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-action="ListRoles" asp-controller="Administration">
+                            <i class="bi bi-circle"></i><span>Roles</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href=@Url.Action("Index", "ScheduledClassStatus")>
+                            <i class="bi bi-circle"></i><span>Scheduled Class Statuses</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href=@Url.Action("Index", "StudentStatus")>
+                            <i class="bi bi-circle"></i><span>Student Statuses</span>
+                        </a>
+                    </li>
+                </ul>
                 @*}*@
             </li><!-- End Components Nav -->
-
             @*@if (SignInManager.IsSignedIn(User) && User.IsInRole("Scheduling") || User.IsInRole("Admin"))
             {*@
-                <li class="nav-item">
-                    <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-                        <i class="bi bi-journal-text"></i><span>Scheduler</span><i class="bi bi-chevron-down ms-auto"></i>
-                    </a>
-                    <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                        <li>
-                            <a href=@Url.Action("Index", "Enrollments")>
-                                <i class="bi bi-circle"></i><span>Enrollments</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href=@Url.Action("Index", "ScheduledClasses")>
-                                <i class="bi bi-circle"></i><span>Scheduled Classes</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href=@Url.Action("Index", "Students")>
-                                <i class="bi bi-circle"></i><span>Students</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a asp-action="ListUsers" asp-controller="Administration">
-                                <i class="bi bi-circle"></i><span>Users</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a asp-action="ListRoles" asp-controller="Administration">
-                                <i class="bi bi-circle"></i><span>Roles</span>
-                            </a>
-                        </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-journal-text"></i><span>Scheduler</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href=@Url.Action("Index", "Enrollments")>
+                            <i class="bi bi-circle"></i><span>Enrollments</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href=@Url.Action("Index", "ScheduledClasses")>
+                            <i class="bi bi-circle"></i><span>Scheduled Classes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href=@Url.Action("Index", "Students")>
+                            <i class="bi bi-circle"></i><span>Students</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-action="ListUsers" asp-controller="Administration">
+                            <i class="bi bi-circle"></i><span>Users</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-action="ListRoles" asp-controller="Administration">
+                            <i class="bi bi-circle"></i><span>Roles</span>
+                        </a>
+                    </li>
 
 
-                    </ul>
-                </li><!-- End Forms Nav -->
+                </ul>
+            </li><!-- End Forms Nav -->
             @*}*@
 
 
