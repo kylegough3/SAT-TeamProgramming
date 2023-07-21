@@ -35,6 +35,11 @@ namespace SAT_TeamProgramming.UI.MVC.Controllers
             return View();
         }
 
+        public IActionResult Documentation() 
+        {
+            return View();
+        }
+
         [HttpPost] //This means the Action below will handle the POST requests
         public IActionResult Contact(ContactViewModel cvm)
         {
