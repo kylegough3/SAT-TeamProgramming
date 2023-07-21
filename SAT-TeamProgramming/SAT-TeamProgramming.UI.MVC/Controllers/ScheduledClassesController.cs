@@ -11,7 +11,7 @@ using SAT_TeamProgramming.DATA.EF.Models;
 
 namespace SAT_TeamProgramming.UI.MVC.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class ScheduledClassesController : Controller
     {
         private readonly SATContext _context;
@@ -23,6 +23,7 @@ namespace SAT_TeamProgramming.UI.MVC.Controllers
 
         // GET: ScheduledClasses
         [Authorize(Roles = "Admin, Scheduler")]
+        
         public async Task<IActionResult> Index()
         {
             var sATContext = _context.ScheduledClasses.Include(s => s.Course).Include(s => s.Scs);

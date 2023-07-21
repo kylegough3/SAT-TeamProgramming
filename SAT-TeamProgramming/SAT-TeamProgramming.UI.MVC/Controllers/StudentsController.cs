@@ -11,7 +11,7 @@ using SAT_TeamProgramming.DATA.EF.Models;
 
 namespace SAT_TeamProgramming.UI.MVC.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class StudentsController : Controller
     {
         private readonly SATContext _context;
@@ -49,6 +49,7 @@ namespace SAT_TeamProgramming.UI.MVC.Controllers
             return View(student);
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: Students/Create
         public IActionResult Create()
         {
@@ -73,6 +74,7 @@ namespace SAT_TeamProgramming.UI.MVC.Controllers
             return View(student);
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: Students/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -90,6 +92,7 @@ namespace SAT_TeamProgramming.UI.MVC.Controllers
             return View(student);
         }
 
+        [Authorize(Roles = "Admin")]
         // POST: Students/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -126,6 +129,7 @@ namespace SAT_TeamProgramming.UI.MVC.Controllers
             return View(student);
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: Students/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -145,6 +149,7 @@ namespace SAT_TeamProgramming.UI.MVC.Controllers
             return View(student);
         }
 
+        [Authorize(Roles = "Admin")]
         // POST: Students/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

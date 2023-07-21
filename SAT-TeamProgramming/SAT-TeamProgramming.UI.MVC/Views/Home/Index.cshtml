@@ -8,8 +8,45 @@
 
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Example Card</h5>
-                    <p>This is an examle page with no content. You can use it as a starter for your custom pages.</p>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <h5 class="card-title">Admin Actions</h5>
+
+                        <!-- Default List group -->
+                        <ul class="list-group">
+                            <li class="list-group-item">Full CRUD Functionality of all functions across the app</li>
+                            <li class="list-group-item">Log Out</li>
+                            
+                        </ul><!-- End Default List group -->
+                    }
+                    @if (User.IsInRole("Scheduler"))
+                    {
+                        <h5 class="card-title">Scheduler Actions</h5>
+
+                        <!-- Default List group -->
+                        <ul class="list-group">
+                            <li class="list-group-item">Log Out</li>
+                            <li class="list-group-item">View Home Index</li>
+                            <li class="list-group-item">View Contact Form</li>
+                            <li class="list-group-item">View Students Index/Details</li>
+                            <li class="list-group-item">View Scheduled Classes Index/Details/Edit/Create</li>
+                            <li class="list-group-item">View Enrollment Full CRUD</li>
+                            
+                        </ul>
+
+                        <!-- End Default List group -->
+                    }
+                    @if(!User.IsInRole("Admin") && !User.IsInRole("Scheduler"))
+                    {
+                        <h5 class="card-title">Anonymous Actions</h5>
+
+                        <!-- Default List group -->
+                        <ul class="list-group">
+                            <li class="list-group-item">View Home Index</li>
+                            <li class="list-group-item">Log In</li>
+                            <li class="list-group-item">View Contact Form</li>
+                        </ul>
+                    }
                 </div>
             </div>
 
